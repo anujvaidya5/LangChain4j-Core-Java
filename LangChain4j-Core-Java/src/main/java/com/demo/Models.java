@@ -17,7 +17,7 @@ public class Models {
     public static ChatModel chat()
     {
         return OpenAiChatModel.builder()
-                .apiKey("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")
+                .apiKey(System.getenv("OPENAI_API_KEY"))
                 .modelName("gpt-4o-mini")
                 .temperature(0.3)
                 .timeout(Duration.ofSeconds(30))
@@ -27,7 +27,7 @@ public class Models {
     {
         return OpenAiStreamingChatModel
                 .builder()
-                .apiKey("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")
+                .apiKey(System.getenv("OPENAI_API_KEY"))
                 .modelName("gpt-4o-mini")
                 .timeout(Duration.ofSeconds(30))
                 .build();
