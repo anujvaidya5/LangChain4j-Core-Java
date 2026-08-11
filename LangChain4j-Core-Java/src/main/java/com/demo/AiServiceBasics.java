@@ -38,23 +38,23 @@ public class AiServiceBasics {
         System.out.println(assistant.chat("What is JAR file?"));
         System.out.println("_________________________________");
 
-//        System.out.println("--- System Message Example --");
-//        System.out.println(assistant.ask("What is SpringBoot"));
-//        System.out.println("-----------------------------------");
-//
-//        System.out.println("--- System Message Example irrelevant --");
-//        System.out.println(assistant.ask("Give me recipe fr Chicken Biryani"));
-//        System.out.println("-----------------------------------");
-//
-//        System.out.println("--- User Message Prompt Template ---");
-//        System.out.println(assistant.explain("Dependency Injection"));
-//        System.out.println("-----------------------------------------");
-//
-//        System.out.println("--- Multiple Param  Prompt Template ---");
-//        System.out.println(assistant.explainFor("Garbage Collection", "Junior", 5));
-//        System.out.println("-----------------------------------------");
-//
-//        System.out.println("Our Ai Assistant implemented by "+assistant.getClass().getName() );
+        System.out.println("--- System Message Example --");
+        System.out.println(assistant.ask("What is SpringBoot"));
+        System.out.println("-----------------------------------");
+
+        System.out.println("--- System Message Example irrelevant --");
+        System.out.println(assistant.ask("Give me recipe fr Chicken Biryani"));
+        System.out.println("-----------------------------------");
+
+        System.out.println("--- User Message Prompt Template ---");
+        System.out.println(assistant.explain("Dependency Injection"));
+        System.out.println("-----------------------------------------");
+
+        System.out.println("--- Multiple Param  Prompt Template ---");
+        System.out.println(assistant.explainFor("Garbage Collection", "Junior", 5));
+        System.out.println("-----------------------------------------");
+
+        System.out.println("Our Ai Assistant implemented by "+assistant.getClass().getName() );
 
     }
 }
