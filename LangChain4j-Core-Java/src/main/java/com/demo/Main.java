@@ -5,6 +5,7 @@ import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.ChatMessage;
 import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
+import dev.langchain4j.model.chat.request.ChatRequest;
 import dev.langchain4j.model.chat.response.ChatResponse;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 
@@ -24,25 +25,25 @@ public class Main {
                 .modelName("gpt-4o-mini")
                 .build();
 
-//        String aiResponse = chatModel.chat("Hi , Tell me about LangChain4j in short .");
-//
-//        System.out.println(aiResponse);
-//
-//        SystemMessage systemMessage = SystemMessage.from(
-//                "You are a Java trainer at Telusko. Answer in short bullet points. " +
-//                        "Never answer questions that are not about programming."
-//        );
-//
-//        UserMessage userMessage = UserMessage.from("HI , Tell me why we need interfaces in Java ?");
-//
-//        ChatResponse response = chatModel.chat(systemMessage, userMessage);
-//        AiMessage reply = response.aiMessage();
-//        System.out.println("Answer: "+ reply.text());
-//        System.out.println("Model used : "+ response.modelName());
-//        System.out.println("Total In/Out Tokens used : "+ response.tokenUsage().totalTokenCount());
-//        System.out.println("Total In Tokens used : "+ response.tokenUsage().inputTokenCount());
-//        System.out.println("Total Out Tokens used : "+ response.tokenUsage().outputTokenCount());
-//        System.out.println("Finish Reason : " + response.metadata().finishReason());
+        String aiResponse = chatModel.chat("Hi , Tell me about LangChain4j in short .");
+
+        System.out.println(aiResponse);
+
+        SystemMessage systemMessage = SystemMessage.from(
+                "You are a Java trainer at Telusko. Answer in short bullet points. " +
+                        "Never answer questions that are not about programming."
+        );
+
+        UserMessage userMessage = UserMessage.from("HI , Tell me why we need interfaces in Java ?");
+
+        ChatResponse response = chatModel.chat(systemMessage, userMessage);
+        AiMessage reply = response.aiMessage();
+        System.out.println("Answer: "+ reply.text());
+        System.out.println("Model used : "+ response.modelName());
+        System.out.println("Total In/Out Tokens used : "+ response.tokenUsage().totalTokenCount());
+        System.out.println("Total In Tokens used : "+ response.tokenUsage().inputTokenCount());
+        System.out.println("Total Out Tokens used : "+ response.tokenUsage().outputTokenCount());
+        System.out.println("Finish Reason : " + response.metadata().finishReason());
 
         System.out.println("------------------------------------------------------");
 
@@ -79,5 +80,19 @@ public class Main {
         AiMessage aiMessage4 = chatModel.chat(conversation).aiMessage();
 
         System.out.println("Four : " + aiMessage4.text());
+
+        System.out.println("------------------------------------------------------------");
+
+        ChatRequest request = ChatRequest.builder()
+                .messages(UserMessage.from("Give me the exact SQL to create a users table with id, email and created_at"))
+                .modelName("gpt-4o")
+                .temperature(0.0)  // controls creativity
+                .maxOutputTokens(150) // control response length
+                .build();
+
+        ChatResponse response1 = chatModel.chat(request);
+        System.out.println(response1.aiMessage().text());
+
+        System.out.println(response1.metadata().modelName());
     }
 }
