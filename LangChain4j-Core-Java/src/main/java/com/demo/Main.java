@@ -86,8 +86,8 @@ public class Main {
         ChatRequest request = ChatRequest.builder()
                 .messages(UserMessage.from("Give me the exact SQL to create a users table with id, email and created_at"))
                 .modelName("gpt-4o")
-                .temperature(0.0)
-                .maxOutputTokens(150)
+                .temperature(0.0)  // controls creativity
+                .maxOutputTokens(150) // control response length
                 .build();
 
         ChatResponse response = chatModel.chat(request);
